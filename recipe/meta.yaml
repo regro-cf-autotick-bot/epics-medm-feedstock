@@ -1,5 +1,5 @@
 {% set name = "MEDM" %}
-{% set version = "3_1_18" %}
+{% set version = "3_1_19" %}
 
 package:
   name: epics-{{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/epics-extensions/medm/archive/MEDM{{ version }}.tar.gz
-  sha256: 78db1f81cee546501cce2298e3342e03007e00baa43b880a7a66ca4a3d181ee3
+  sha256: 7e752c3a3b099cb8c396f54c245bde55aacdf58c056ef11b7c9e6500849f724c
   patches:
     # don't statically compile to libraries from macports macOS
     - no-macports.patch  # [osx]
@@ -20,6 +20,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - make
   host:
